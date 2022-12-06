@@ -2,17 +2,13 @@
  * Rutas de usuarios / Auth
  * host + /api/auth
  */
-
 const { Router } = require("express");
 const router = Router();
+const { crearUsuario, loginUsuario, revalidarToken } = require("../controllers/auth");
 
 
-router.get('/', (req, res) => {
-  res.json({
-    ok: true,
-    msg: 'get'
-  });
-});
-
+router.post('/new', crearUsuario);
+router.post('/', loginUsuario);
+router.post('/renew', revalidarToken);
 
 module.exports = router;
