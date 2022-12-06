@@ -4,13 +4,27 @@ const { response, request } = express;
 
 const crearUsuario = (req = request, res = response) => {
 
+  const { name, email, password } = req.body;
+
+  if (name.length < 5) {
+    return res.status(400).json({
+      ok: false,
+      msg: 'El nombre debe ser de 5 letras'
+    });
+  }
+
   res.json({
     ok: true,
-    msg: 'registro'
+    msg: 'registro',
+    name,
+    email,
+    password
   });
 };
 
 const loginUsuario = (req = request, res = response) => {
+  const { email, password } = req.body;
+
   res.json({
     ok: true,
     msg: 'login'
@@ -18,6 +32,7 @@ const loginUsuario = (req = request, res = response) => {
 };
 
 const revalidarToken = (req = request, res = response) => {
+
   res.json({
     ok: true,
     msg: 'renew'
