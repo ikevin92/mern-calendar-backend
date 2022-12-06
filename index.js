@@ -1,3 +1,4 @@
+
 const express = require('express');
 require('dotenv').config();
 
@@ -10,9 +11,11 @@ const port = process.env.PORT || 4000;
 app.use(express.static('public'));
 
 
+
 // Rutas de mi app
-// app.get('/', (req, res) => {
-// });
+app.use('/api/auth', require('./routes/auth'));
+// TODO: crud:eventos
+
 
 
 // Arrancar el servidor y escuchar peticiones
