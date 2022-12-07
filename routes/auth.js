@@ -11,7 +11,7 @@ const { validarCampos } = require("../middlewares/validar-campos");
 
 router.post('/new',
   [
-    // middlewares
+    // middleware's
     check('name', 'El nombre es obligatorio').not().isEmpty(),
     check('email', 'El email es obligatorio').isEmail(),
     check('password', 'El password debe de ser de 6 caracteres').isLength({ min: 6 }),
@@ -21,7 +21,7 @@ router.post('/new',
 
 router.post('/',
   [
-    // middlewares
+    // middleware's
     check('email', 'El email es obligatorio').isEmail(),
     check('password', 'El password debe de ser de 6 caracteres').isLength({ min: 6 }),
     validarCampos
