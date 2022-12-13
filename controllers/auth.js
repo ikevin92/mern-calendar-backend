@@ -2,6 +2,7 @@ const express = require("express");
 const { validationResult } = require("express-validator");
 const { response, request } = express;
 const Usuario = require("../models/Usuario");
+const bcrypt = require('bcrypt');
 
 
 const crearUsuario = async (req = request, res = response) => {
@@ -18,6 +19,10 @@ const crearUsuario = async (req = request, res = response) => {
     }
 
     usuario = new Usuario(req.body);
+
+    // Encriptar contraseña
+    const salt = bcrypt.genSaltSync();
+    usuario.password = bcrypt.hashSync(password, salt);
 
     await usuario.save();
 
