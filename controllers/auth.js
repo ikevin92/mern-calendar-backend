@@ -26,7 +26,6 @@ const loginUsuario = (req = request, res = response) => {
 };
 
 const revalidarToken = (req = request, res = response) => {
-
   res.json({
     ok: true,
     msg: 'renew'
