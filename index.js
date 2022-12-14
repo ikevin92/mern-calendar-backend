@@ -21,9 +21,10 @@ app.use(express.static('public'));
 // lectura y parseo del body
 app.use(express.json());
 
-// Rutas de mi app
+// Rutas
 app.use('/api/auth', require('./routes/auth'));
-// TODO: crud:eventos
+app.use('/api/events', require('./routes/events'));
+
 
 // Arrancar el servidor y escuchar peticiones
 app.listen(port, () => console.log(`Servidor corriendo en puerto ${port}!`));
